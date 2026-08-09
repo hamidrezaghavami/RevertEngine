@@ -1,0 +1,1 @@
+// Manages active session stacks

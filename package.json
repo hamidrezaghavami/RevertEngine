@@ -1,0 +1,20 @@
+{
+  "name": "revertengine",
+  "version": "1.0.0",
+  "description": "A high-performance, real-time Undo/Redo state management service built with Node.js and Stack Data Structures.",
+  "homepage": "https://github.com/hamidrezaghavami/RevertEngine#readme",
+  "bugs": {
+    "url": "https://github.com/hamidrezaghavami/RevertEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hamidrezaghavami/RevertEngine.git"
+  },
+  "license": "MIT",
+  "author": "HamidRezaGhavami",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "test": "Jest"
+  }
+}
