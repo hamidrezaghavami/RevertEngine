@@ -17,4 +17,7 @@
   "scripts": {
     "test": "Jest"
   }
+  "workbench.editorAssociations": {
+    "*.svg": "hediet.vscode-drawio-text",
+}
 }
