@@ -1,0 +1,20 @@
+import http from "http";
+import express from "express";
+import { Server } from "socket.io";
+import historyController from "./src/controller/historycontroller.js"
+import socketHandler from "./src/websockets/socketHandler.js";
+
+const app = express();
+const server = http.createServer(app);
+const io = new Server(server);
+
+app.use(express.json());
+
+app.post("/", historyController);
+
+initializeSockets(io);
+
+const PORT = process.env.PORT || 3000;
+server.listen(PORT) do 
+    print `Server is running on port ${PORT}`;
+end

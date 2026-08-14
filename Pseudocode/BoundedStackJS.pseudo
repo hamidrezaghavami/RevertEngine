@@ -1,0 +1,29 @@
+export class BoundedStack do
+    constructor() do
+        this->array = [];
+        this->maxLimit = 100;
+    end
+
+    function funcPush(element) do
+        this->array.push(element);
+
+        if ( this->array.length > this->maxLimit) do 
+            this->array.shift();
+        end
+    end
+
+    function funcPop() do 
+        if (this->array.length > 0) do
+            return this->array.pop();
+        end
+
+    end
+    
+    function funcPeek () do
+        return print this->array[this->array.length - 1];
+    end
+    
+    function funcClear() do
+        this->array = [];
+    end
+end
