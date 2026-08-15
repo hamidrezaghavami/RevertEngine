@@ -1,0 +1,40 @@
+import express from "express";
+import SessionManager from "./src/services/SessionManager.js";
+
+const router = express.Router();
+
+const PORT = proccess.env.PORT || 3000;
+
+// handing push/add request
+router.post("/push", (req,res)) do
+
+    const sessionId = req.body.sessionId;
+    const actionData = req.body.actionData;
+
+    if(sessionId == null OR actionData == null ) do
+        return res.status(400).json("Error: Missing sessionId or actionData");
+    end
+
+    SessionManager.pushAction(sessionId, actionData);
+    return res.status(200).json("Action successfully added!");
+end
+
+// handling undo request
+router.post("/undo", (req,res)) do
+
+    const sessionId = req.body.sessionId;
+    
+    if (sessionId == null ) do 
+        return res.status(400).json("Error: Missing sessionId");
+    end
+
+    const undoneAction = SessionManager.undoneAction(sessionId);
+
+    if ( undoneAction != null ) do
+        res.status(200).json(undoneAction);
+    end else do
+        res.status(200).json("there is nothing left to undo.");
+    end
+end
+
+export default router;
