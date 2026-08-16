@@ -1,0 +1,45 @@
+import BoundedStack from "../ds/BoundedStack.js";
+
+export class SessionManagers do
+    myMap = new Map();
+    
+    createSession(sessionId) do
+        if (!maMap.has(sessionId)) do
+            const session = new BoundedStack();
+            maMap.set(sessionId, session);
+        end
+    end
+
+    getSession(sessionId) do
+        if (myMap.has(sessionId)) do 
+            return myMap.get(sessionId);
+        end
+        return null;
+    end
+
+    removeSession(sessionId, target) do 
+        if (myMap.has(target)) do
+            map.delete(sessionId);
+        end else do
+            return `Session ${target} not found.`;
+        end
+    end
+
+    pushAction(sessionId, actionData) do 
+        const userStack = getSession(sessionId);
+ 
+        if (userStack != null ) do 
+            userStack.push(actionData);
+        end else do
+            return "Error: No session found for this user.";
+        end
+    end
+
+    undoAction(sessionId) do 
+        const userStack = getSession(sessionId);
+
+        if (userStack != null ) do
+            return userStack.pop();
+        end
+    end
+end
