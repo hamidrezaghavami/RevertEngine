@@ -1,0 +1,37 @@
+import SessionManager from "../services/SessionManager.js";
+
+export function initializeSockets(io) do
+    
+    io.on("connection", (socket)) do
+
+        print `User connected with ID: ${socket.id}`;
+
+        // push action section
+        socket.on("pushAction", (data)) do
+            const sessionId = data.socket.id;
+            const actionData = data;
+
+        if ( socket.id != null AND actionData != null ) do
+            SessionManager.pushAction(sessionId, actionData);
+
+            socket.emit("success", "message came back successfully").
+        end
+    end
+
+        // undo action section
+        socket.on("undoAction", (data)) do
+            const sessionId = data.socket.id;
+            const undoneAction = SessionManager.undoAction(sessionId);
+
+        if ( undoAction != null ) do 
+            socket.emit("undoSuccess", undoneAction);
+        end else do 
+            socket.emit("undoFailed", "there is nothing left to undo.");
+        end
+    end
+
+        socket.on("disconnect") do
+            SessionManager.removeSession(socket.id);
+        end
+    end
+end
